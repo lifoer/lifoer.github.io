@@ -59,7 +59,8 @@ google_analytics: ''
 favicon: /favicon.png
 
 #你的头像url
-avatar: https://raw.githubusercontent.com/lifoer/lifoer.github.io/master/img/avatar.jpg
+#avatar: https://raw.githubusercontent.com/lifoer/lifoer.github.io/master/img/avatar.jpg
+avatar: /img/avatar.jpg
 
 #是否开启分享
 share_jia: true
