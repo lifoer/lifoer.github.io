@@ -66,15 +66,20 @@ resources/mybatis/mappers/：BookMapper.xml
 > applicationContext-transation.xml  配置事务管理。
 > applicationContext-mybatis.xml spring管理myabtis。配置mysql连接池；构造SqlSessionFactory交给spring管理（需配置数据库连接，引入mybatis配置文件，对mapper.xml的扫描，实体类的别名包）；配置对数据层(Dao层)的mapper接口扫描。
 > 很快我们便会感觉到spring配置文件分类写的好处，之后需要创建applicationContext-redis加入redis缓存的时候，就不需要更改某些不相关的配置文件了，可以减少出错率。
+
 2>springmvc配置文件
 > springmvc-config.xml, 配置springmvc。配置开启springmvc注解，根据需要修改（我们后续项目返回json的时候就需要修改ResponseBody让返回json由fastjson解析）；开启包扫描（扫描controller层）；定义视图解析器（定义资源前缀和后缀）；防止静态资源拦截配置（若web.xml中访问的拦截为/*需配置此项，防止js，css等静态资源被拦截）。
+
 3>mybatis配置文件
 > mybatis-config.xml,配置mybatis配置，mybatis基本配置已配置于spirng整合文件中，可根据需求扩张。我们项目需要基本开启驼峰扫描（使表名和实体类大小写对应，Book实体类对应于book表。当然若表名复杂，此项无效，只能引入Table注解了）（我们后续项目中就需要配置log4j为默认日志输出类时，需要配置开启二级缓存）。mybatis插件，根据需要扩展（我们后续项目中就需要配置mybatis的分页插件实现物理分页查询）。
+
 4>properties配置文件
 > properties配置文件不是必须，可以直接将各项参数写入spring配置文件中，但是降低耦合性，建议这样创建properties文件。需要msyql配置文件jdbc-mysql.properties。（后续我们管理日志的时候需要配置log4j.properties，加入redis缓存的时候需要配置redis.properties）
+
 5>mapper.xml配置文件
 > XxMapper.xml是用来存放sql语句的，根据实际业务场景创建。是ssm框架中耦合性低的一种良好体现。
 > 我们项目中第一个业务需要创建BookMapper.xml文件来存放各种查询语句。
+
 7.修改webapp/WEB-INF/web.xml文件。  --> web.xml
 > web.xml文件作为web程序的入口，是很重要的配置
 > web.xml中各项配置的加载顺序： context-param ->listener -> filter -> servlet
