@@ -1,10 +1,10 @@
 ---
-title: Hadoop安装与使用
-date: 2018-04-04 08:50:52
+title: Hadoop安装与简单使用
+date: 2018-04-04 09:50:52
 tags: 大数据
 ---
 
-![](Haddop安装与使用/hadoop-logo.jpg)
+![](Haddop安装与简单使用/hadoop-logo.jpg)
 
 
 <!--more-->
