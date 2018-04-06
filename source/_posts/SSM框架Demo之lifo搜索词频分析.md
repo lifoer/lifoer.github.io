@@ -26,7 +26,7 @@ tags: java
 
 1.使用前端开发神器SublimeText3，安装Emmet插件，高效编写html页面。-> index.html、index.css
 
-2.用PowerDesigner建模工具设计表。这里只有一张表，也可以手动创建。->ifo数据库、book表
+2.用PowerDesigner建模工具设计表。这里只有一张表，也可以手动创建。->lifo数据库、book表
 
 创建lifo数据库和book表，并插入一条测试数据。
 
