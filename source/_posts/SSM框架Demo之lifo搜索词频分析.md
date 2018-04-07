@@ -1,6 +1,6 @@
 ---
 title: SSM框架Demo之lifo搜索词频分析
-date: 2018-04-07 03:50:05
+date: 2018-04-07 20:23:05
 tags: java
 toc: true
 ---
@@ -358,7 +358,7 @@ resources/mybatis/mappers2/WordMapper.xml
 
 ### 写总结文档的过程中暂时发现项目中2个可以优化的地方。
 > 其一.便是放弃Mybatis的二级缓存，自己管理缓存。
-> 其二.项目中spring配置文件还是很繁琐的，或许可以去学习Springoot来简化配置。
+> 其二.项目中spring配置文件还是很繁琐的，或许可以去学习SpringBoot来简化配置。
 
 
 
