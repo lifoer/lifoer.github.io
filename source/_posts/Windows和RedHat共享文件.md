@@ -1,7 +1,7 @@
 ---
 title: Windows和RedHat共享文件
 date: 2017-06-13 00:36:08
-tags: 随便写写
+tags: linux
 ---
 
 Windows主机和VMware虚拟机中的RedHat通过FTP服务共享文件

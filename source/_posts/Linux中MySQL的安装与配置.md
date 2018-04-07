@@ -1,13 +1,16 @@
 ---
-title: Linux中MySQL的安装与配置
+title: Centos中MySQL的安装与配置
 date: 2018-04-04 8:07:24
 tags: linux
 ---
 
-Linux中使用yum安装和配置MySQL
+Centos中使用yum安装和配置MySQL
 
 
 <!--more-->
+
+
+Centos版本：x64_6.5
 
 
 1.查看系统自带mysql

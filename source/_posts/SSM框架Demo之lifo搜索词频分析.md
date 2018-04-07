@@ -2,6 +2,7 @@
 title: SSM框架Demo之lifo搜索词频分析
 date: 2018-04-07 03:50:05
 tags: java
+toc: true
 ---
 
 ![logo](SSM框架Demo之lifo搜索词频分析/logo.png)
@@ -14,7 +15,7 @@ tags: java
 
 
 #### 设计目标：
-做一个SSM框架的Demo，实现某种物品的查询搜索，用Redis缓存减轻Mysql压力实现高并发。并对搜索结果进行记录，通过Flume收集到HDFS系统，通过MapReduce进行处理，导出到Mysql中，通过Echarts做搜索热词排行榜。
+做一个SSM框架的Demo，实现某种物品的分页查询、关键词搜索，用Redis缓存减轻Mysql压力实现高并发。并对搜索结果进行记录，通过Flume收集到HDFS系统，通过MapReduce进行处理，导出到Mysql中，通过Echarts做搜索热词排行榜。
 
 #### 设计原则：
 尽量简化业务逻辑，主要加深对知识的应用。选什么物品实现业务逻辑呢，当然是书了，书籍是人类进步的阶梯。
@@ -24,11 +25,11 @@ tags: java
 
 以下实现中的详细配置和代码见仓库。[web.demo](https://github.com/lifoer/web.demo)
 
-1.使用前端开发神器SublimeText3，安装Emmet插件，高效编写html页面。-> index.html、index.css
+1.使用前端开发神器SublimeText3，安装Emmet插件，高效编写html页面。	--> index.html、index.css
 
-2.用PowerDesigner建模工具设计表。这里只有一张表，也可以手动创建。->lifo数据库、book表
+2.用PowerDesigner建模工具设计表。这里只有一张表，也可以手动创建。
 
-创建lifo数据库和book表，并插入一条测试数据。
+创建lifo数据库和book表，并插入一条测试数据。	-->lifo数据库、book表
 
 ```
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`lifo` /*!40100 DEFAULT CHARACTER SET utf8 */;
@@ -49,13 +50,14 @@ CREATE TABLE `book` (
 ```
 3.Eclipse导入Maven插件，方便jar包管理。
 
-4.创建MavenProject的quickstart工程，lifo-parent，作为项目父工程，用来管理jar包。 --> lifo-parent工程
+4.创建MavenProject的quickstart工程，lifo-parent，作为项目父工程，用来管理jar包。	--> lifo-parent工程
    修改pom.xml文件，导入预期所需jar包，并把Packaging类型改为pom。
   ps：只导入了SSM框架所需的jar包，后续需要什么继续添加。
 
-5.创建MavenProject的webapp工程，lifo-web，作为项目主工程。-->lifo-web工程
+5.创建MavenProject的webapp工程，lifo-web，作为项目主工程。	-->lifo-web工程
 
-6.lifo-web工程resources目录下新建spirng配置文件，springmvc配置文件，mybatis配置文件，properties配置文件，搭建ssm环境。-->
+6.lifo-web工程resources目录下新建spirng配置文件，springmvc配置文件，mybatis配置文件，properties配置文件，搭建ssm环境。
+->
 resources/spring/：applicationContext.xml、applicationContext-transation.xml 、applicationContext-mybatis.xml 、springmvc-config.xml、
 resources/mybatis/：mybatis-config.xml
 resources/： jdbc-mysql.properties
@@ -145,31 +147,33 @@ resources/mybatis/mappers/：BookMapper.xml
 
 --> lifo-spider工程
 
-20.拷贝lifo-web工程的resources中的配置文件，springmvc配置文件可以删了,BookMapper.xml改为WordMapper.xml还可以再用，修改其他配置中的各种包扫描路径。修改pom.xml文件继承lifo-parent工程。
+20.拷贝lifo-web工程的resources中的配置文件，springmvc配置文件可以删了,BookMapper.xml修改sql语句还可以再用。修改pom.xml文件继承lifo-parent工程。
 
 -->
 resources/spring/：applicationContext.xml、applicationContext-transation.xml 、applicationContext-mybatis.xml 
 resources/mybatis/：mybatis-config.xml
 resources/： jdbc-mysql.properties
-resources/mybatis/mappers/：WordMapper.xml
+resources/mybatis/mappers/：BookMapper.xml
 
-20.新建 各种包、接口、类，lifo.controlelr.WordController、lifo.serviece.WordService接口、lifo.serviece.WordServiceImpl、lifo.mapper.WordMapper接口。
+20.新建 各种包、接口、类，lifo.controlelr.BookController、lifo.serviece.BookService接口、lifo.serviece.BookServiceImpl、lifo.mapper.BookMapper接口。
 
-既然没有springmvc，为什么还添加controller？controller只是一个代号，代表的是此层是控制层，我们实际写了一个main来调用，并通过对set方法添加自动注入来实现WordService的静态自动注入。而且就我了解，没去读sping源码，不太确定了，controller注解也是spring的注解，并不是springmvc特有的。
+-->lifo.controlelr.BookController、lifo.serviece.BookService、lifo.serviece.BookServiceImpl、lifo.mapper.BookMapper
+
+既然没有springmvc，为什么还添加controller包？controller包名只是一个代号，代表的是此层是控制层，我们实际写了一个main方法来调用Service层，通过对set方法添加自动注入，来实现BookService的静态自动注入。（而且看源码，controller注解也是spring的注解，而不是springmvc的，只是可能可以交给springmvc管理吧。）
 
 为什么没有pojo，我们实际需求的封装数据只需2个字段，而实体表中有多个字段，便不使用实体类了。而且我们只涉及到查询业务，使用map封装数据一样方便。用什么封装看具体哪种方式方便了，不能一概而论。
 
-21.工欲善其事必先利其器。接下来便是选用api来实现爬虫了。我此前了解到的有三种，httpclient，jsoup，javase原生。或许，也有一些框架，能有更强大的特性，只能以后了解了。
+21.工欲善其事必先利其器。接下来便是选用api来实现爬虫了。我此前了解到的有三种，httpclient，jsoup，javase原生。或许，也有一些框架，有更强大的特性，只能以后研究了。
 
 jsoup提供了很好的css选择器，很方便抓取页面。而且也可设置一些请求头来简单伪装真实访问，在小规模爬虫中或许可以起到一定的防反爬虫作用。我们便用它来抓取数据了。
 而javase原生类中提供了根据url获取输入流的方法，我们便用它来下载所需的图书封面。
-而httpclient，自然也不会打入冷宫，它强大的请求功能自有用武之地，后续用到再说。
+而httpclient呢，自然也不会落入平阳，它强大的请求功能自有用武之地，后续用到再说。
 
 22.万事具备，只缺一个网站了。既是图书，便选当当了。每到图书打折的时候，我还是会经常光顾的。
 
 1>打开当当，爬什么类目呢？文学，no，当然是计算机图书了，然后java。
 
-2>然后选择第二页，为了在地址栏获取get提交的页码信息。
+2>然后选择第二页（为了在地址栏获取get提交的页码信息）。
 
 3>去掉url中无用信息，确保此链接可以访问到目标。此链接便是我们用jsoup发起请求的链接。
 
@@ -202,9 +206,9 @@ server {
 
 25.新的问题出现了，我的页面被数据撑爆了。少年，你没分页吧。确实，之前一条测试数据的时候，哪管什么分页啊，现在上千条涌入。
 
-26.用什么分页呢，controller层控制吗？这是一种逻辑分页的思想，这样貌似解决了当下问题。可当数据量更大时，对数据库不是一个友好的措施，你每查要全部，实际却用几条，不是浪费吗。
+26.用什么分页呢，controller层控制吗？这是一种逻辑分页的思想，这样貌似解决了当下问题。可当数据量更大时，对数据库不是一个友好的措施，每次查询全部，实际却用几条，不是浪费吗。
 
-27.为了避免资源的浪费，我们采用物理分页的方式，用多少取多少。引入mybatis的分页插件pagehelper。这款插件简单易用，耦合性很低，只需3步即可，简直神器也。 
+27.为了杜绝资源的浪费，我们采用物理分页的方式，用多少取多少。引入mybatis的分页插件pagehelper。这款插件简单易用，耦合性很低，只需3步即可，简直神器也。 
 
 -->引入PageHelper
 
@@ -250,20 +254,21 @@ pageInfo = new PageInfo<Book>(bookList);
 ```
 29.再次运行项目，清爽很多，分页功能实现。
 
-30.我们每次查询数据都是固定的，但每次都需要从数据库获取，而数据库是持久化到磁盘上的，访问数据受限，再则，如果访问人数足够多，数据库访问不过来呢。所以有必要引入缓存机制，用Redis内存数据库来提高数据查询效率实现高并发。
+30.我们每次查询数据都是固定的，但每次数据都需要从数据库中获取，而mysql数据库是持久化到磁盘上的，访问速度受限。再则，如果访问人数足够多，数据库响应不过来呢。所以有必要引入缓存机制，用Redis内存数据库来提高数据查询效率，实现高并发。
 
 -->引入Redis缓存
 
-31.Vm虚拟机中安装Centos系统，安装Redis。
+31.Vm虚拟机中安装Centos系统，安装Redis。[Redis安装与简单使用](#)
 
-32.怎么引入Redis呢，调用Jedis自己写入吗。理论研究中，我们应该尽量繁琐，去想无数种可能。实际研发中，我们应该去繁就简，只去使用最安全可靠的方式。所以这里我们打开Mybatis的二级缓存，配置Redis为Mybtais的二级缓存，让Mybatis自己去管理缓存。
+32.怎么引入Redis呢，写一个Jedis工具类在Service层调用吗？demo中为了简化实现，使用Redis作为Mybatis的二级缓存，让Mybatis自己去管理缓存。
 
 33.需要编写RedisCache类去继承Mybatis缓存类Cache，并编写RedisCacheTransfer中间类，用于注入静态对象jedis连接工厂。
 创建spring管理jedis的配置文件applicationContext-redis.xml，redis配置文件redis.properties。
 
--->lifo.log.RedisCache、lifo.log.RedisCacheTransfer、resources/spring/applicationContext-redis.xml、redis.properties
+-->lifo.cache.RedisCache、lifo.cache.RedisCacheTransfer、resources/spring/applicationContext-redis.xml、
+resources/redis.properties
 
-34.使用好用的日志管理类log4j打印mybatis日志，配置log4j.properties文件，修改mybatis默认的日志打印参数。
+34.使用日志管理类log4j打印mybatis日志，配置log4j.properties文件，修改mybatis默认的日志打印参数。
 mybati打印日志优先级：SLF4J -> Apache Commons Logging ->  Log4j 2 -> Log4j -> JDK logging
 可以看到log4j优先级很低，myabtis-config.xml的settings标签添加
 
@@ -271,12 +276,90 @@ mybati打印日志优先级：SLF4J -> Apache Commons Logging ->  Log4j 2 -> Log
 <!-- 指定日志输出log4j -->
 <setting name="logImpl" value="LOG4J"/>
 ```
+-->resources/log4j.properties
+
+> 实际使用中发现log4j配置文件最好放在classpath根路径下，否则需要在web.xml中spring加载前导入。
+
 35.重新启动工程，在查询时候可以看到，控制台输出的Myabtis缓存数据命中信息，当多次访问后，命中率为1，这时我们的数据便完全从Redis中获取了。试着，去宕掉你的数据库，就是关闭数据库服务，查询照样进行。因为当缓存中存在本次查询的key时，它会默认中缓存中获取value。
 
-有一个问题：当数据是从外部插入而不是通过mybatis插入的时候，因为默认从缓存中获取。最新的数据是获取不到的，需要手动删除缓存。由此可能引发一个问题，因为redis缓存是mybatis自动管理的，那么当数据从外部导入时，我们因找不到合适范围的key，可能得清空全部缓存，重新建立了。不过实际生产中，数据应该大多是通过事务插入的，也就不存在这个问题了。
+![](SSM框架Demo之lifo搜索词频分析/2.png)
 
-# 时间关系，暂未写完，待续。
+有一些问题：
 
+> 1>.为什么不直接用Mybatis的二级缓存呢？Mybatis的二级缓存只是本地缓存机制，Redis可以作分布式集群缓存，Redis的读写效率在大数据下更高。
+
+> 2>.Mybatis二级缓存有什么问题？Mybatis的二级缓存范围是一个命名空间中（XxMapper.xml文件），粒度太粗，只要存在增删改操作，就会清空当前命名空间下的所有二级缓存。并且在多个命名空间中，还会发生因一个命名空间发生增删改操作，而另一个命名空间没有自动更新缓存产生脏读的问题。由于Myabtis二级缓存的特性，会导致这样配置的Redis可用性不高。
+
+> 本demo中只涉及到少量数据，只存在一个命名空间，只涉及到查询操作，为了简化流程只作为测试使用。
+
+>  实际项目中，Myabtis二级缓存可用性不高，建议写jedis工具类，自己在Service层管理缓存。
+
+36.若搜索时关键词不为空，便将搜索记录同时写出本地文件和Flume中。需要自定义log4j日志级别，输出指定的日志信息。
+访问ip，关键词，访问时间。
+
+37.写自定义日志类CustomLog，单例，封装外部调用的静态方法。主要方法为设置输出本地文件的Appender对象和设置输出Flume的Appender对象。此处可以查看flume-ng-log4jappender的api封装对应的参数。
+
+-->lifo.log.Customlog
+
+38.安装Flume，编写本例conf文件，将收集到的数据按天写出到HDFS中，为方便使用并编写Flume启动和关闭的shell脚本。[Flume安装和简单使用](https://lifoer.github.io/2018/04/04/Flume安装与简单使用)
+
+29.安装Hadoop，配置Hadoop伪分布式，需要用HDFS系统存储Flume收集到的日志，并用MapReduce进行计算。[Hadoop安装与简单使用](https://lifoer.github.io/2018/04/04/Hadoop安装与简单使用)
+
+30.安装Hive，简化Hadoop的MapReduce操作，创建外部表word_src导入HDFS的日志数据，创建内部表word_count插入word_src统计后的数据。[Hive安装与简单使用](https://lifoer.github.io/2018/04/04/Hive安装与简单使用)
+
+31.安装Sqoop，将Hive统计数据写出到mysql，这里写出到了Centos的mysql中。（而前面使用的是windows中的mysql）。
+[Sqoop安装与简单使用](#)
+
+32.编写脚本自动执行，并加入llinux定时任务中
+> 为了模拟真实使用场景，本脚本需实现：每天凌晨2时自动后台执行，Hive导入HDFS中数据，经过MapReduce运算，再用Sqoop导出Mysql中，并按天生成执行日志。
+[自动实现脚本](https://lifoer.github.io/2018/04/04/Hive安装与简单使用/#四-脚本执行)
+
+33.日志自动收集实现了，可日志呢？前台手动输入关键词获取吗？no，我们要获取很多数据来分析，当然是自动化了。该HttpClient登场了。
+
+34.lifo-spider下编写类FeignRequest 。设置好一些关键词，每次随机获取一个，封装到map中，用httpclient向我们的前台发起发起post提交，然后坐享其成。3分钟后10000次请求好了。浏览器中查看hdfs系统中确实收集到了一万条日志记录。
+
+35.增加一个linux定时任务，时间为下一分钟，运行我们的脚本，完成centos中mysql数据的导入。
+
+36.选择合适的Echarts图表做热词可视化，根据场景选择了字符云、饼形图、柱形彩虹图。编写html页面，加入Echarts的js。
+
+37.为了按日期选择数据，使用flatpickr日期插件。
+
+38.测试页面后导入jsp。--> view.jsp
+
+39.问题又产生了，我们使用的Book业务使用的windows中的数据库，而word业务要使用linux中的数据库。一个系统中可以使用多个数据库吗？答案是肯定的。Mybatis的缓存虽然不好用，但其他功能还是很强大的。只需在applicationContext-mybatis.xml文件中添加一套配置即可。配置一个dataSource2、SqlSessionFactory2，MapperScannerConfigurer中扫描mapper2文件夹。在jdbc-mysql.properties中加入另一个数据库的参数。
+
+40.创建lifo.controller.WordController，lifo.service.WordService接口，lifo.service.WordServiceImpl,lifo.mapper2.WordMapper,添加相应注解，自动注入相关类。复制BookMapper.xml为WordMapper.xml。
+
+-->lifo.controlelr.WordController、lifo.serviece.WordService、lifo.serviece.WordServiceImpl、lifo.mapper2.WordMapper、
+resources/mybatis/mappers2/WordMapper.xml
+
+41.前台怎么接受数据呢？Echarts需要的是json串。name：value形式。
+后台怎么传数据呢？查询数据用map封装，然后使用阿里巴巴的fastjson，非常方便的把集合对象转换为json串。
+
+FastJson：
+
+42.在controller层使用RequestBody注解，返回json值。测试，中文乱码了。
+
+43.原来RequestBody是按照springmvc默认的方式解析json的，需要在spingmvc-config.xml中配置使RequestBody注解来通知springmvc由fastjson解析json。
+
+```
+<mvc:annotation-driven>
+	<!--配置@ResponseBody由fastjson解析-->
+             <mvc:message-converters>
+              <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                     <property name="defaultCharset" value="UTF-8"/>
+              </bean>
+              <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter"/>
+             </mvc:message-converters>
+</mvc:annotation-driven>
+```
+44.这时浏览器查看json串中文显示正常，考虑Echarts怎么获取json串。为了良好的视觉体验，使用Ajax异步请求来获取数据，为了简化js编写，使用jquery的ajax方法。
+
+45.到此，项目便结束了。项目到开始到结束用了10天，算是对近期所学杂乱知识的简单实践。总结文档写了2天，也发现了很多不完善的地方。学海无涯，路还远兮。
+
+### 写总结文档的过程中暂时发现项目中2个可以优化的地方。
+> 其一.便是放弃Mybatis的二级缓存，自己管理缓存。
+> 其二.项目中spring配置文件还是很繁琐的，或许可以去学习springboot来简化配置。
 
 
 
