@@ -258,7 +258,7 @@ pageInfo = new PageInfo<Book>(bookList);
 
 -->引入Redis缓存
 
-31.Vm虚拟机中安装Centos系统，安装Redis。[Redis安装与简单使用](#)
+31.Vm虚拟机中安装Centos系统，安装并配置一台Redis。
 
 32.怎么引入Redis呢，写一个Jedis工具类在Service层调用吗？demo中为了简化实现，使用Redis作为Mybatis的二级缓存，让Mybatis自己去管理缓存。
 
@@ -308,7 +308,7 @@ mybati打印日志优先级：SLF4J -> Apache Commons Logging ->  Log4j 2 -> Log
 30.安装Hive，简化Hadoop的MapReduce操作，创建外部表word_src导入HDFS的日志数据，创建内部表word_count插入word_src统计后的数据。[Hive安装与简单使用](https://lifoer.github.io/2018/04/04/Hive安装与简单使用)
 
 31.安装Sqoop，将Hive统计数据写出到mysql，这里写出到了Centos的mysql中。（而前面使用的是windows中的mysql）。
-[Sqoop安装与简单使用](#)
+[Sqoop安装与简单使用](https://lifoer.github.io/2018/04/04/Sqoop安装与简单使用/)
 
 32.编写脚本自动执行，并加入llinux定时任务中
 > 为了模拟真实使用场景，本脚本需实现：每天凌晨2时自动后台执行，Hive导入HDFS中数据，经过MapReduce运算，再用Sqoop导出Mysql中，并按天生成执行日志。
@@ -335,8 +335,7 @@ resources/mybatis/mappers2/WordMapper.xml
 
 41.前台怎么接受数据呢？Echarts需要的是json串。name：value形式。
 后台怎么传数据呢？查询数据用map封装，然后使用阿里巴巴的fastjson，非常方便的把集合对象转换为json串。
-
-FastJson：
+[FastJson](https://github.com/alibaba/fastjson)
 
 42.在controller层使用RequestBody注解，返回json值。测试，中文乱码了。
 
@@ -359,7 +358,7 @@ FastJson：
 
 ### 写总结文档的过程中暂时发现项目中2个可以优化的地方。
 > 其一.便是放弃Mybatis的二级缓存，自己管理缓存。
-> 其二.项目中spring配置文件还是很繁琐的，或许可以去学习springboot来简化配置。
+> 其二.项目中spring配置文件还是很繁琐的，或许可以去学习Springoot来简化配置。
 
 
 
