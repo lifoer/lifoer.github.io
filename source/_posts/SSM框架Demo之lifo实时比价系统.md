@@ -91,4 +91,6 @@ IIII.属性名的更改
 
 #### 五、不足之处
 逻辑相对简单，只设计了一张表。本次查询如果和上次查询session不同就会删除session重新爬取数据，无法应对很高的并发量。
+#### 六、实现代码
+[web.demo.bj](https://github.com/lifoer/web.demo.bj)
 

@@ -25,7 +25,7 @@ toc: true
 
 #### 具体实现：
 
-以下实现中的详细配置和代码见仓库。[web.demo](https://github.com/lifoer/web.demo)
+以下实现中的详细配置和代码见仓库。[web.demo](https://github.com/lifoer/web.demo.hotword)
 
 1.使用前端开发神器SublimeText3，安装Emmet插件，高效编写html页面。	--> index.html、index.css
 
