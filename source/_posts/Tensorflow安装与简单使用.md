@@ -11,10 +11,8 @@ toc: true
 <!--more-->
 
 
-@toc
-
 写在开头：
-1.本文时间：2018年12月；为什么要说明时间？因为技术是不断革新的，某些观点和步骤可能
+1.本文时间：2018年11月；为什么要说明时间？因为技术是不断革新的，某些观点和步骤可能
 不适合之后的版本。
 
 2.哪些系统可以安装tensorflow？
@@ -45,7 +43,7 @@ mac......
 
 8.本文以CPU安装为主。
 
-### linux安装
+### linux中安装
 
 version：centos7.5（6以上也适用）、anaconda3、python3.6、tensorflow1.2
 date：2018/11/26
@@ -416,7 +414,7 @@ pip uninstall tensorflow
 ```
 
 
-### window安装
+### window中安装
 
 version：window7、python3.6、tensorflow1.1
 date：2018/11/06
