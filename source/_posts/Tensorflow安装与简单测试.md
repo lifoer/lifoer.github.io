@@ -1,5 +1,5 @@
 ---
-title: Tensorflow安装与简单使用
+title: Tensorflow安装与简单测试
 date: 2018-11-27 15:27:57
 tags: 机器学习
 toc: true
