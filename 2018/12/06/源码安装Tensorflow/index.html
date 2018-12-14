@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | lifo.red</title>
+  <title>源码安装Tensorflow | lifo.red</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="lifo.red">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="源码安装可以根据机器配置安装最优版，最大化利用硬件计算能力。">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="源码安装Tensorflow">
+<meta property="og:url" content="http://yoursite.com/2018/12/06/源码安装Tensorflow/index.html">
 <meta property="og:site_name" content="lifo.red">
+<meta property="og:description" content="源码安装可以根据机器配置安装最优版，最大化利用硬件计算能力。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-14T10:03:17.476Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lifo.red">
+<meta name="twitter:title" content="源码安装Tensorflow">
+<meta name="twitter:description" content="源码安装可以根据机器配置安装最优版，最大化利用硬件计算能力。">
   
     <link rel="alternative" href="/atom.xml" title="lifo.red" type="application/atom+xml">
   
@@ -130,36 +135,77 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-源码安装Tensorflow" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      源码安装Tensorflow
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/06/源码安装Tensorflow/" class="archive-article-date">
+
+        
+        <a href="/2018/12/06/源码安装Tensorflow/" class="archive-article-date">
   	<time datetime="2018-12-06T09:57:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/06/源码安装Tensorflow/">源码安装Tensorflow</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>源码安装可以根据机器配置安装最优版，最大化利用硬件计算能力。</p>
+<a id="more"></a>
+<p>接上文<a href="http://lifoer.github.io/2018/11/27/Tensorflow%E5%AE%89%E8%A3%85%E4%B8%8E%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" target="_blank" rel="noopener">tensorflow安装</a>，若从未安装过，建议先使用安装包安装，后续扩展。<br>本文以CPU版本为主，解决AVX2等指令集支持问题。</p>
+<p>上文环境：centos7.5、anaconda3、python3.6<br>date：2018/12/6</p>
+<p>一、bazel安装</p>
+<p>1.jdk8安装(bazel依赖jdk8)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-8u181-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#jdk1.8</span><br><span class="line">export JAVA_HOME=/app/files/software/jdk1.8</span><br><span class="line">export CLASS_PATH=$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure>
+<p>2.bazel安装</p>
+<p>bazel官网：<br><a href="https://github.com/bazelbuild/bazel/releases" target="_blank" rel="noopener">https://github.com/bazelbuild/bazel/releases</a><br><a href="https://docs.bazel.build/versions/master/install.html" target="_blank" rel="noopener">https://docs.bazel.build/versions/master/install.html</a></p>
+<p>1&gt;yum引导<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install bazel</span><br></pre></td></tr></table></figure></p>
+<p>2&gt;下载安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh bazel-0.20.0-installer-linux-x86_64.sh</span><br></pre></td></tr></table></figure></p>
+<p>3&gt;查看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bazel version</span><br></pre></td></tr></table></figure></p>
+<p>二、tensorflow编译</p>
+<p>1.安装编译依赖库</p>
+<p> numpy、pip、wheel</p>
+<p>后两项若使用Anaconda安装python方式，默认已安装。</p>
+<p>查看当前已安装库 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#进入python3.6环境</span><br><span class="line">source activate py36</span><br><span class="line">#列出当前环境已安装包</span><br><span class="line">conda list</span><br></pre></td></tr></table></figure>
+<p>安装numpy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install numpy</span><br></pre></td></tr></table></figure>
+<p>3.编译并生成安装文件</p>
+<p>1&gt;下载最新tensorflow源码<br><a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow</a></p>
+<p>2&gt;配置编译选项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd tensorflow-master/</span><br><span class="line">./configure</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:</span><br><span class="line">/app/files/packages/tensorflow-master/tools/bazel.rc</span><br><span class="line">WARNING: --batch mode is deprecated. Please instead explicitly shut down your Bazel server using the command &quot;bazel shutdown&quot;.</span><br><span class="line">INFO: Invocation ID: bb5cea33-fbf5-4ca2-bc76-ba7eb0188adc</span><br><span class="line">You have bazel 0.20.0 installed.</span><br><span class="line"></span><br><span class="line">#python地址</span><br><span class="line">Please specify the location of python. [Default is /root/anaconda3/envs/py36/bin/python]</span><br><span class="line">enter</span><br><span class="line"></span><br><span class="line">#python库地址</span><br><span class="line">Found possible Python library paths:</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages  </span><br><span class="line">Please input the desired Python library path to use.Default is [/root/anaconda3/envs/py36/lib/python3.6/site-packages]</span><br><span class="line">enter</span><br><span class="line"></span><br><span class="line">#是否支持 XLA(Accelerated Linear Algebra/加速线性代数)、JIT（Just in Time/即时编译）</span><br><span class="line">Do you wish to build TensorFlow with XLA JIT support? </span><br><span class="line">n</span><br><span class="line">No XLA JIT support will be enabled for TensorFlow.</span><br><span class="line"></span><br><span class="line">#是否支持 OpenCL SYCL</span><br><span class="line">Do you wish to build TensorFlow with OpenCL SYCL support?</span><br><span class="line">n</span><br><span class="line">No OpenCL SYCL support will be enabled for TensorFlow.</span><br><span class="line"></span><br><span class="line">#是否支持ROCm，AMD显卡</span><br><span class="line">Do you wish to build TensorFlow with ROCm support?</span><br><span class="line">n</span><br><span class="line">No ROCm support will be enabled for TensorFlow.</span><br><span class="line"></span><br><span class="line">#是否支持CUDA，NVIDIA显卡</span><br><span class="line">Do you wish to build TensorFlow with CUDA support?</span><br><span class="line">n</span><br><span class="line">No CUDA support will be enabled for TensorFlow.</span><br><span class="line"></span><br><span class="line">#是否下载clang编译器</span><br><span class="line">Do you wish to download a fresh release of clang?</span><br><span class="line">n</span><br><span class="line">Clang will not be downloaded.</span><br><span class="line"></span><br><span class="line">#是否支持MPI(Message-Passing-Interface/消息传递接口)</span><br><span class="line">Do you wish to build TensorFlow with MPI support? </span><br><span class="line">n</span><br><span class="line">No MPI support will be enabled for TensorFlow.</span><br><span class="line"></span><br><span class="line">#使用bazel编译时可以指定优化参数，(如添加GPU支持，添加额外的CPU指令集支持)</span><br><span class="line">Please specify optimization flags to use during compilation when bazel option &quot;--config=opt&quot; is specified [Default is -march=native -Wno-sign-compare]</span><br><span class="line">enter</span><br><span class="line"></span><br><span class="line">#是否为Android配置</span><br><span class="line">Would you like to interactively configure ./WORKSPACE for Android builds? </span><br><span class="line">n</span><br><span class="line">Not configuring the WORKSPACE for Android builds.</span><br><span class="line"></span><br><span class="line">#配置完成</span><br><span class="line">Preconfigured Bazel build configs. You can use any of the below by adding &quot;--config=&lt;&gt;&quot; to your build command. See .bazelrc for more details.</span><br><span class="line">	--config=mkl         	# Build with MKL support.</span><br><span class="line">	--config=monolithic  	# Config for mostly static monolithic build.</span><br><span class="line">	--config=gdr         	# Build with GDR support.</span><br><span class="line">	--config=verbs       	# Build with libverbs support.</span><br><span class="line">	--config=ngraph      	# Build with Intel nGraph support.</span><br><span class="line">	--config=dynamic_kernels	# (Experimental) Build kernels into separate shared objects.</span><br><span class="line">Preconfigured Bazel build configs to DISABLE default on features:</span><br><span class="line">	--config=noaws       	# Disable AWS S3 filesystem support.</span><br><span class="line">	--config=nogcp       	# Disable GCP support.</span><br><span class="line">	--config=nohdfs      	# Disable HDFS support.</span><br><span class="line">	--config=noignite    	# Disable Apacha Ignite support.</span><br><span class="line">	--config=nokafka     	# Disable Apache Kafka support.</span><br><span class="line">	--config=nonccl      	# Disable NVIDIA NCCL support.</span><br><span class="line">Configuration finished</span><br></pre></td></tr></table></figure>
+<p>3&gt;编译源码</p>
+<p>默认cpu编译方式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package</span><br><span class="line">#bazel build -c opt //tensorflow/tools/pip_package:build_pip_package</span><br></pre></td></tr></table></figure></p>
+<p>查看cpu支持的指令集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#执行</span><br><span class="line">cat /proc/cpuinfo</span><br><span class="line">#有如下结果，可以看到sse3,sse4.1,sse4.2,avx,avx2,fma等信息</span><br><span class="line">...</span><br><span class="line">flags: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl eagerfpu pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch fsgsbase bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx smap xsaveopt</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>添加cpu支持指令集编译<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bazel build -c opt --copt=-msse3 --copt=-msse4.1 --copt=-msse4.2 --copt=-mavx --copt=-mavx2 --copt=-mfma //tensorflow/tools/pip_package:build_pip_package</span><br></pre></td></tr></table></figure></p>
+<p>我安装事实证明，默认编译方式，也会根据当前CPU的指令集，默认添加支持。之前使用安装包安装的方式，运行tensorflow会有如下警告，使用默认方式安装完后也不再由此警告。故CPU安装推荐先使用默认方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA</span><br></pre></td></tr></table></figure>
+<p>漫长的等待，成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">INFO: Elapsed time: 4143.941s, Critical Path: 236.75s</span><br><span class="line">INFO: 8105 processes: 8105 local.</span><br><span class="line">INFO: Build completed successfully, 8836 total actions</span><br></pre></td></tr></table></figure>
+<p>4&gt;生成安装文件</p>
+<p>生成whl文件，只有后面路径分隔有个空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg</span><br></pre></td></tr></table></figure>
+<p>出现如下，成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thu Dec 6 17:48:03 CST 2018 : === Output wheel file is in: /tmp/tensorflow_pkg</span><br></pre></td></tr></table></figure>
+<p>轮子好了，可以安装了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp/tensorflow_pkg/ &amp;&amp; ls</span><br><span class="line">tensorflow-1.12.0rc0-cp36-cp36m-linux_x86_64.whl</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -171,364 +217,118 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/12/06/源码安装Tensorflow/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/27/Tensorflow安装与简单使用/" class="archive-article-date">
-  	<time datetime="2018-11-27T07:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-27</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/27/Tensorflow安装与简单使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Tensorflow安装与简单使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/27/Tensorflow安装与简单使用/">Tensorflow安装与简单使用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/09/腾讯优图AI开放平台初体验/" class="archive-article-date">
-  	<time datetime="2018-07-09T15:21:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-09</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/09/腾讯优图AI开放平台初体验/">腾讯优图AI开放平台初体验</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/09/支付宝支付之电脑网站支付/" class="archive-article-date">
-  	<time datetime="2018-07-09T13:26:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/09/支付宝支付之电脑网站支付/">支付宝支付之电脑网站支付</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/06/SSM框架Demo之EasyShop购物商城/" class="archive-article-date">
-  	<time datetime="2018-07-06T01:40:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/06/SSM框架Demo之EasyShop购物商城/">SSM框架Demo之EasyShop购物商城</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/04/Maven/" class="archive-article-date">
-  	<time datetime="2018-06-04T08:43:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/04/Maven/">Maven</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/04/神奇的网站/" class="archive-article-date">
-  	<time datetime="2018-06-04T08:14:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/04/神奇的网站/">神奇的网站</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">other</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/02/少年的歌/" class="archive-article-date">
-  	<time datetime="2018-06-02T10:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/02/少年的歌/">少年的歌</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/15/SSM框架Demo之lifo实时比价系统/" class="archive-article-date">
-  	<time datetime="2018-04-15T05:08:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/15/SSM框架Demo之lifo实时比价系统/">SSM框架Demo之lifo实时比价系统</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/07/SSM框架Demo之lifo搜索词频分析/" class="archive-article-date">
-  	<time datetime="2018-04-07T12:23:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/07/SSM框架Demo之lifo搜索词频分析/">SSM框架Demo之lifo搜索词频分析</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -552,8 +352,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
