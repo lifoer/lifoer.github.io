@@ -82,7 +82,7 @@ ln -s /root/anaconda3/envs/py36/bin/python3.6 python
 ```
 ln –s 源文件 目标文件
 
-5.硬链接建立
+5.硬连接建立
 
 ```
 ln /root/anaconda3/envs/py36/bin/python3.6 python
