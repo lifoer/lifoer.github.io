@@ -5,7 +5,7 @@ tags: 机器学习
 toc: true
 ---
 
-![](Tensorflow安装与简单使用/tensorflow-logo.png)
+![](Tensorflow安装与简单测试/tensorflow-logo.png)
 
 
 <!--more-->
@@ -451,7 +451,7 @@ pip install tensorflow-1.11.0-cp36-cp36m-win_amd64.whl
 #进入python
 pyhon
 #键入测试
->>>import tensorflow as tf
+>>> import tensorflow as tf
 >>> hello = tf.constant('Hello, TensorFlow!')
 >>> sess = tf.Session()
 >>> print(sess.run(hello))
