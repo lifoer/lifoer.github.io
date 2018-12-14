@@ -5,7 +5,7 @@ tags: 机器学习
 toc: true
 ---
 
-![](Tensorflow安装与简单使用/tensorflow-logo.jpg)
+![](Tensorflow安装与简单使用/tensorflow-logo.png)
 
 
 <!--more-->
