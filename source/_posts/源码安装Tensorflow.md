@@ -37,7 +37,6 @@ export PATH=$PATH:$JAVA_HOME/bin
 ```
 
 
-
 2.bazel安装
 
 bazel官网：
