@@ -1,5 +1,5 @@
 ---
-title: Tensorflow-hub图片分类
+title: Tensorflow-hub简单使用
 date: 2018-12-01 18:13:31
 tags: 机器学习
 toc: true
