@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="lifo.red">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2018/11/27/Tensorflow安装与简单使用/tensorflow-logo.jpg">
-<meta property="og:updated_time" content="2018-12-14T09:27:08.628Z">
+<meta property="og:updated_time" content="2018-12-14T09:40:51.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow安装与简单使用">
 <meta name="twitter:image" content="http://yoursite.com/2018/11/27/Tensorflow安装与简单使用/tensorflow-logo.jpg">
@@ -156,8 +156,7 @@
       
         <p><img src="/2018/11/27/Tensorflow安装与简单使用/tensorflow-logo.jpg" alt=""></p>
 <a id="more"></a>
-<p>@toc</p>
-<p>写在开头：<br>1.本文时间：2018年12月；为什么要说明时间？因为技术是不断革新的，某些观点和步骤可能<br>不适合之后的版本。</p>
+<p>写在开头：<br>1.本文时间：2018年11月；为什么要说明时间？因为技术是不断革新的，某些观点和步骤可能<br>不适合之后的版本。</p>
 <p>2.哪些系统可以安装tensorflow？<br>答：windows、linux、mac均可</p>
 <p>3.tensorflow的版本有哪些？<br>答：有CPU和GPU版本。<br>CPU因支持指令集不同，可以有不同的版本。如gituhub可下载到的编译好的window版就分为<br>x86_64/SSE2（普通64位），AVX2（支持avx2指令集，avx2是CPU的扩展指令集）。<br>GPU也分N卡和A卡。<br>安装适合机器的版本可以提高计算能力。</p>
 <p>4.怎么选择适合版本？<br>答：有支持tensorflow的显卡就用GPU版.<br>有支持高级指令集的CPU，就使用高级指令集的。<br>当然为了安装简单，也可以选择普遍适用的CPU普通版本。</p>
@@ -165,7 +164,7 @@
 <p>6.tensorflow安装方式有哪些？<br>答：可以安装编译好的版本，可以从源码编译安装。</p>
 <p>7.怎么下载tensorflow版本<br>答：window可以在gituhub下载较全的GPU和CPU编译版本。<br>linux可以下载到普通CPU（不支持AVX2等指令）和GPU编译版本。需要特定版本需要编译tensorflow源码安装。<br>mac……</p>
 <p>8.本文以CPU安装为主。</p>
-<h3 id="linux安装"><a href="#linux安装" class="headerlink" title="linux安装"></a>linux安装</h3><p>version：centos7.5（6以上也适用）、anaconda3、python3.6、tensorflow1.2<br>date：2018/11/26</p>
+<h3 id="linux中安装"><a href="#linux中安装" class="headerlink" title="linux中安装"></a>linux中安装</h3><p>version：centos7.5（6以上也适用）、anaconda3、python3.6、tensorflow1.2<br>date：2018/11/26</p>
 <h4 id="一、Anaconda安装"><a href="#一、Anaconda安装" class="headerlink" title="一、Anaconda安装"></a>一、Anaconda安装</h4><p>1.下载安装<br><a href="https://www.anaconda.com/download/#linux" target="_blank" rel="noopener">Anaconda-linux</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#安装</span><br><span class="line">sh Anaconda3-5.3.1-Linux-x86_64.sh</span><br><span class="line"></span><br><span class="line">#测试</span><br><span class="line">conda --version</span><br><span class="line"></span><br><span class="line">#若提示 bash: conda: command not found，请设置环境变量，建议使用方法3一劳永逸</span><br><span class="line">#1.设置临时环境变量，仅当前会话生效</span><br><span class="line">export PATH=$PATH:~/anaconda3/bin</span><br><span class="line">#2.设置当前用户环境变量</span><br><span class="line">vim ~/.bash_profile</span><br><span class="line">#添加..，生效..</span><br><span class="line">#3.设置全局环境变量</span><br><span class="line">vim /etc/profile</span><br><span class="line">#添加如下</span><br><span class="line">export PATH=$PATH:~/anaconda3/bin</span><br><span class="line">#生效</span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br><span class="line">#conda其他命令</span><br><span class="line">#当前活跃环境下的所有包</span><br><span class="line">conda list</span><br><span class="line">#安装某个包</span><br><span class="line">conda install xxx</span><br></pre></td></tr></table></figure>
 <p>2.添加Anaconda下载源。</p>
@@ -219,7 +218,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#1.安装AVX2指令集的tensorflow</span><br><span class="line">#2.代码中加入，将tensorflowr日志显示级别调整为2，即不显示这个警告，默认为1</span><br><span class="line">import os</span><br><span class="line">os.environ[&quot;TF_CPP_MIN_LOG_LEVEL&quot;] = &apos;2&apos;</span><br><span class="line">#3.可以选择不处理</span><br></pre></td></tr></table></figure>
 <p>五、tensorflow卸载</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall tensorflow</span><br></pre></td></tr></table></figure>
-<h3 id="window安装"><a href="#window安装" class="headerlink" title="window安装"></a>window安装</h3><p>version：window7、python3.6、tensorflow1.1<br>date：2018/11/06</p>
+<h3 id="window中安装"><a href="#window中安装" class="headerlink" title="window中安装"></a>window中安装</h3><p>version：window7、python3.6、tensorflow1.1<br>date：2018/11/06</p>
 <p>1.exe安装Anaconda<br><a href="https://www.anaconda.com/download/#windows" target="_blank" rel="noopener">Anaconda-windows</a></p>
 <p>2.测试是否安装成功</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
@@ -348,7 +347,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux安装"><span class="toc-number">1.</span> <span class="toc-text">linux安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、Anaconda安装"><span class="toc-number">1.1.</span> <span class="toc-text">一、Anaconda安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、python安装"><span class="toc-number">1.2.</span> <span class="toc-text">二、python安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、tensorflow安装"><span class="toc-number">1.3.</span> <span class="toc-text">三、tensorflow安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四、tensorflow测试及错误详解"><span class="toc-number">1.4.</span> <span class="toc-text">四、tensorflow测试及错误详解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#window安装"><span class="toc-number">2.</span> <span class="toc-text">window安装</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux中安装"><span class="toc-number">1.</span> <span class="toc-text">linux中安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、Anaconda安装"><span class="toc-number">1.1.</span> <span class="toc-text">一、Anaconda安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、python安装"><span class="toc-number">1.2.</span> <span class="toc-text">二、python安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、tensorflow安装"><span class="toc-number">1.3.</span> <span class="toc-text">三、tensorflow安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四、tensorflow测试及错误详解"><span class="toc-number">1.4.</span> <span class="toc-text">四、tensorflow测试及错误详解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#window中安装"><span class="toc-number">2.</span> <span class="toc-text">window中安装</span></a></li></ol>
                     </div>
                 </span>
             </div>
