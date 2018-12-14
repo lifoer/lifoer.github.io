@@ -11,14 +11,14 @@
   <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tensorflow安装与简单使用">
-<meta property="og:url" content="http://yoursite.com/2018/11/27/Tensorflow安装与简单使用/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/Tensorflow安装与简单测试/index.html">
 <meta property="og:site_name" content="lifo.red">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/Tensorflow安装与简单使用/tensorflow-logo.png">
-<meta property="og:updated_time" content="2018-12-14T09:50:53.532Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/Tensorflow安装与简单测试/tensorflow-logo.png">
+<meta property="og:updated_time" content="2018-12-14T11:18:59.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow安装与简单使用">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/27/Tensorflow安装与简单使用/tensorflow-logo.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/27/Tensorflow安装与简单测试/tensorflow-logo.png">
   
     <link rel="alternative" href="/atom.xml" title="lifo.red" type="application/atom+xml">
   
@@ -134,7 +134,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Tensorflow安装与简单使用" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-Tensorflow安装与简单测试" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -146,7 +146,7 @@
   
 
         
-        <a href="/2018/11/27/Tensorflow安装与简单使用/" class="archive-article-date">
+        <a href="/2018/11/27/Tensorflow安装与简单测试/" class="archive-article-date">
   	<time datetime="2018-11-27T07:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-27</time>
 </a>
         
@@ -154,7 +154,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/2018/11/27/Tensorflow安装与简单使用/tensorflow-logo.png" alt=""></p>
+        <p><img src="/2018/11/27/Tensorflow安装与简单测试/tensorflow-logo.png" alt=""></p>
 <a id="more"></a>
 <p>写在开头：<br>1.本文时间：2018年11月；为什么要说明时间？因为技术是不断革新的，某些观点和步骤可能<br>不适合之后的版本。</p>
 <p>2.哪些系统可以安装tensorflow？<br>答：windows、linux、mac均可</p>
@@ -229,7 +229,7 @@
 <p>5.pip安装，我下载了CPU的AVX2版本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow-1.11.0-cp36-cp36m-win_amd64.whl</span><br></pre></td></tr></table></figure>
 <p>6.测试</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#进入python</span><br><span class="line">pyhon</span><br><span class="line">#键入测试</span><br><span class="line">&gt;&gt;&gt;import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; hello = tf.constant(&apos;Hello, TensorFlow!&apos;)</span><br><span class="line">&gt;&gt;&gt; sess = tf.Session()</span><br><span class="line">&gt;&gt;&gt; print(sess.run(hello))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#进入python</span><br><span class="line">pyhon</span><br><span class="line">#键入测试</span><br><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; hello = tf.constant(&apos;Hello, TensorFlow!&apos;)</span><br><span class="line">&gt;&gt;&gt; sess = tf.Session()</span><br><span class="line">&gt;&gt;&gt; print(sess.run(hello))</span><br></pre></td></tr></table></figure>
 <p>7.可能发生的错误或警告</p>
 <p>1）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade --ignore-installed tensorflow</span><br><span class="line">#python3.7下pip直接安装tensorflow</span><br><span class="line">#could not find a version that satisfies the requirement tensorflow</span><br><span class="line">#由于当时pip库里还没有适合python3.7的tensorflow版本，后续可能不会有此问题；若有此，请从github地址下载安装</span><br></pre></td></tr></table></figure>
@@ -304,7 +304,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/27/Tensorflow安装与简单使用/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/27/Tensorflow安装与简单测试/" alt="微信分享二维码">
     </div>
 </div>
 
