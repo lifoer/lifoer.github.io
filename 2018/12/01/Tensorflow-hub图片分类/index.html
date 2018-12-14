@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>腾讯优图AI开放平台初体验 | lifo.red</title>
+  <title>Tensorflow-hub图片分类 | lifo.red</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ocr文字识别">
-<meta name="keywords" content="java">
+  <meta name="description" content="利用tensorflow-hub工具，在谷歌图片分类模型上进行迁移学习。">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="腾讯优图AI开放平台初体验">
-<meta property="og:url" content="http://yoursite.com/2018/07/09/腾讯优图AI开放平台初体验/index.html">
+<meta property="og:title" content="Tensorflow-hub图片分类">
+<meta property="og:url" content="http://yoursite.com/2018/12/01/Tensorflow-hub图片分类/index.html">
 <meta property="og:site_name" content="lifo.red">
-<meta property="og:description" content="ocr文字识别">
+<meta property="og:description" content="利用tensorflow-hub工具，在谷歌图片分类模型上进行迁移学习。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-14T05:41:25.250Z">
+<meta property="og:updated_time" content="2018-12-14T10:17:21.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="腾讯优图AI开放平台初体验">
-<meta name="twitter:description" content="ocr文字识别">
+<meta name="twitter:title" content="Tensorflow-hub图片分类">
+<meta name="twitter:description" content="利用tensorflow-hub工具，在谷歌图片分类模型上进行迁移学习。">
   
     <link rel="alternative" href="/atom.xml" title="lifo.red" type="application/atom+xml">
   
@@ -135,29 +135,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-腾讯优图AI开放平台初体验" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-Tensorflow-hub图片分类" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      腾讯优图AI开放平台初体验
+      Tensorflow-hub图片分类
     </h1>
   
 
         
-        <a href="/2018/07/09/腾讯优图AI开放平台初体验/" class="archive-article-date">
-  	<time datetime="2018-07-09T15:21:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-09</time>
+        <a href="/2018/12/01/Tensorflow-hub图片分类/" class="archive-article-date">
+  	<time datetime="2018-12-01T10:13:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ocr文字识别</p>
+        <p>利用tensorflow-hub工具，在谷歌图片分类模型上进行迁移学习。</p>
 <a id="more"></a>
-<p>情景再现：识别书中文本，输出表格文件。<br>有米之炊：sdk下载：<a href="http://open.youtu.qq.com/#/develop/tool-sdk" target="_blank" rel="noopener">http://open.youtu.qq.com/#/develop/tool-sdk</a>     api简介：<a href="https://github.com/Tencent-YouTu/java_sdk" target="_blank" rel="noopener">https://github.com/Tencent-YouTu/java_sdk</a><br>蜀道之难：只要保证图片质量，识别正确率接近百分百。识别后文字为json形式，难点在于使用正则处理json串，输出所需格式。<br>课堂内外：文本输出Excel使用Apache POI。</p>
+<h3 id="一、说明和文件"><a href="#一、说明和文件" class="headerlink" title="一、说明和文件"></a>一、说明和文件</h3><p>tensorflow代码仓库：<a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow</a><br>hub代码仓库：<a href="https://github.com/tensorflow/hub" target="_blank" rel="noopener">https://github.com/tensorflow/hub</a><br>hub迁移学习官网介绍（需要梯子）：<a href="https://www.tensorflow.org/hub/tutorials/image_retraining#visualizing_the_retraining_with_tensorboard" target="_blank" rel="noopener">https://www.tensorflow.org/hub/tutorials/image_retraining#visualizing_the_retraining_with_tensorboard</a><br>预训练模型说明：<a href="https://github.com/tensorflow/models/tree/master/research/slim" target="_blank" rel="noopener">https://github.com/tensorflow/models/tree/master/research/slim</a><br>测试图片集下载（需要梯子）：<a href="http://download.tensorflow.org/example_images/flower_photos.tgz" target="_blank" rel="noopener">http://download.tensorflow.org/example_images/flower_photos.tgz</a><br>Inception V3在线（需要梯子）:<br><a href="https://tfhub.dev/google/inaturalist/inception_v3/feature_vector/1" target="_blank" rel="noopener">https://tfhub.dev/google/inaturalist/inception_v3/feature_vector/1</a><br>Inception V3模型本地下载（需要梯子）：<br><a href="https://tfhub.dev/google/inaturalist/inception_v3/feature_vector/1?tf-hub-format=compressed" target="_blank" rel="noopener">https://tfhub.dev/google/inaturalist/inception_v3/feature_vector/1?tf-hub-format=compressed</a></p>
+<h3 id="二、tensorflow-hub安装"><a href="#二、tensorflow-hub安装" class="headerlink" title="二、tensorflow-hub安装"></a>二、tensorflow-hub安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source activate py36</span><br><span class="line">pip install tensorflow-hub</span><br></pre></td></tr></table></figure>
+<h3 id="三、训练模型"><a href="#三、训练模型" class="headerlink" title="三、训练模型"></a>三、训练模型</h3><p>1.下载py文件retrain.py<br><a href="https://github.com/tensorflow/hub/blob/master/examples/image_retraining/retrain.py" target="_blank" rel="noopener">https://github.com/tensorflow/hub/blob/master/examples/image_retraining/retrain.py</a></p>
+<p>2.最简单的方式训练</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#--image_dir指定待训练图片集路径</span><br><span class="line">#默认使用在线的Inception V3模型</span><br><span class="line">#其他默认参数可查看源码</span><br><span class="line">python ./retrain.py --image_dir ~/flower_photos</span><br></pre></td></tr></table></figure>
+<p>3.查看py脚本完整参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ./retrain.py -h</span><br></pre></td></tr></table></figure>
+<p>4.较完整参数实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#--image_dir 指定待训练图片集路径</span><br><span class="line">#--saved_model_dir 保存模型路径，不要创建model文件夹</span><br><span class="line">#--bottleneck_dir 保存bottleneck文件路径，不必创建bottleneck文件夹</span><br><span class="line">#--how_many_training_steps 训练多少步</span><br><span class="line">#--output_labels 标签文件存放路径，必须创建output文件夹</span><br><span class="line">#--output_graph pb模型存放路径</span><br><span class="line">#--tfhub_module 预训练模型路径，可指定在线或本地路径 </span><br><span class="line">#./premodels 为本地下载解压好的v3模型存放路径</span><br><span class="line">python ./retrain.py --image_dir /app/files/images/flower_photos/ --saved_model_dir ./files/flower/model/ --bottleneck_dir ./files/flower/bottleneck/ --how_many_training_steps 20 --output_labels ./files/flower/output/output_labels.txt --output_graph ./files/flower/output/retrain.pb --tfhub_module ./premodels</span><br></pre></td></tr></table></figure>
+<p>5.运行关键画面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">INFO:tensorflow:Looking for images in &apos;daisy&apos;</span><br><span class="line">INFO:tensorflow:Looking for images in &apos;dandelion&apos;</span><br><span class="line">INFO:tensorflow:Looking for images in &apos;roses&apos;</span><br><span class="line">INFO:tensorflow:Looking for images in &apos;sunflowers&apos;</span><br><span class="line">INFO:tensorflow:Looking for images in &apos;tulips&apos;</span><br><span class="line">......</span><br><span class="line">INFO:tensorflow:Creating bottleneck at ./files/flower/bottleneck/tulips/3524204544_7233737b4f_m.jpg_.~premodels.txt</span><br><span class="line">INFO:tensorflow:Creating bottleneck at ./files/flower/bottleneck/tulips/17159349572_c0c51599f7_n.jpg_.~premodels.txt</span><br><span class="line">......</span><br><span class="line">INFO:tensorflow:2018-12-03 16:24:39.526751: Step 0: Train accuracy = 49.0%</span><br><span class="line">INFO:tensorflow:2018-12-03 16:24:39.527079: Step 0: Cross entropy = 1.552117</span><br><span class="line">INFO:tensorflow:2018-12-03 16:24:40.128679: Step 0: Validation accuracy = 31.0% (N=100)</span><br><span class="line">INFO:tensorflow:2018-12-03 16:24:41.270725: Step 10: Train accuracy = 79.0%</span><br><span class="line">INFO:tensorflow:2018-12-03 16:24:41.270955: Step 10: Cross entropy = 1.187036</span><br><span class="line">INFO:tensorflow:2018-12-03 16:24:41.404452: Step 10: Validation accuracy = 84.0% (N=100)</span><br><span class="line">INFO:tensorflow:2018-12-03 16:24:42.413912: Step 19: Train accuracy = 98.0%</span><br><span class="line">INFO:tensorflow:2018-12-03 16:24:42.414116: Step 19: Cross entropy = 0.916541</span><br><span class="line">INFO:tensorflow:2018-12-03 16:24:42.515238: Step 19: Validation accuracy = 89.0% (N=100)</span><br><span class="line">......</span><br><span class="line">INFO:tensorflow:Final test accuracy = 92.1% (N=340)</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h3 id="四、测试模型"><a href="#四、测试模型" class="headerlink" title="四、测试模型"></a>四、测试模型</h3><p>1.下载测试py文件label_image.py<br><a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/label_image/label_image.py" target="_blank" rel="noopener">https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/label_image/label_image.py</a></p>
+<p>2.可将文件放到retrain.py同目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#--graph pb文件路径</span><br><span class="line">#--labels 标签文件路径</span><br><span class="line">#--input_layer 输入层</span><br><span class="line">#--output_layer 输出层</span><br><span class="line">#--image 测试图片</span><br><span class="line">python ./label_image.py --graph ./files/flower/output/retrain.pb --labels ./files/flower/output/output_labels.txt --input_layer=Placeholder --output_layer=final_result --image /app/files/images/test/daisy.jpg</span><br></pre></td></tr></table></figure></p>
+<p>3.运行关键画面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.....</span><br><span class="line">daisy 0.44550425</span><br><span class="line">roses 0.15574977</span><br><span class="line">tulips 0.14537261</span><br><span class="line">dandelion 0.12802716</span><br><span class="line">sunflowers 0.12534623</span><br></pre></td></tr></table></figure>
 
       
 
@@ -171,7 +185,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
       		
 		</ul>
@@ -227,7 +241,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/07/09/腾讯优图AI开放平台初体验/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/12/01/Tensorflow-hub图片分类/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -241,18 +255,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/11/27/Tensorflow安装与简单使用/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/12/06/源码安装Tensorflow/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Tensorflow安装与简单使用
+          源码安装Tensorflow
         
       </div>
     </a>
   
   
-    <a href="/2018/07/09/支付宝支付之电脑网站支付/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">支付宝支付之电脑网站支付</div>
+    <a href="/2018/11/27/Tensorflow安装与简单使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Tensorflow安装与简单使用</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -271,6 +285,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、说明和文件"><span class="toc-number">1.</span> <span class="toc-text">一、说明和文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、tensorflow-hub安装"><span class="toc-number">2.</span> <span class="toc-text">二、tensorflow-hub安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、训练模型"><span class="toc-number">3.</span> <span class="toc-text">三、训练模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、测试模型"><span class="toc-number">4.</span> <span class="toc-text">四、测试模型</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
