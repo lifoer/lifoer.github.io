@@ -6,7 +6,7 @@ toc: true
 ---
 
 
-利用tensorflow-hub工具，在谷歌图片分类模型上进行迁移学习。
+利用tensorflow-hub工具，在谷歌训练模型上进行迁移学习。
 
 
 <!--more-->
