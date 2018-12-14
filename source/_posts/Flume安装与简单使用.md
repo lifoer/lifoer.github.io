@@ -1,5 +1,5 @@
 ---
-title: flume安装与简单实用
+title: Flume安装与简单实用
 date: 2018-04-04 10:43:37
 tags: 大数据
 ---
