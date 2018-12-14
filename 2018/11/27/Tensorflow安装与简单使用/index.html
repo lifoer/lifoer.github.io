@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>正则表达式删除代码注释 | lifo.red</title>
+  <title>Tensorflow安装与简单使用 | lifo.red</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="通过正则表达式替换和删除代码注释">
-<meta name="keywords" content="随便写写">
+  <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则表达式删除代码注释">
-<meta property="og:url" content="http://yoursite.com/2017/06/13/正则表达式删除代码注释/index.html">
+<meta property="og:title" content="Tensorflow安装与简单使用">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/Tensorflow安装与简单使用/index.html">
 <meta property="og:site_name" content="lifo.red">
-<meta property="og:description" content="通过正则表达式替换和删除代码注释">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-14T05:41:25.249Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/Tensorflow安装与简单使用/tensorflow-logo.jpg">
+<meta property="og:updated_time" content="2018-12-14T09:27:08.628Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正则表达式删除代码注释">
-<meta name="twitter:description" content="通过正则表达式替换和删除代码注释">
+<meta name="twitter:title" content="Tensorflow安装与简单使用">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/27/Tensorflow安装与简单使用/tensorflow-logo.jpg">
   
     <link rel="alternative" href="/atom.xml" title="lifo.red" type="application/atom+xml">
   
@@ -135,30 +134,108 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-正则表达式删除代码注释" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-Tensorflow安装与简单使用" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      正则表达式删除代码注释
+      Tensorflow安装与简单使用
     </h1>
   
 
         
-        <a href="/2017/06/13/正则表达式删除代码注释/" class="archive-article-date">
-  	<time datetime="2017-06-13T04:47:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
+        <a href="/2018/11/27/Tensorflow安装与简单使用/" class="archive-article-date">
+  	<time datetime="2018-11-27T07:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>通过正则表达式替换和删除代码注释</p>
+        <p><img src="/2018/11/27/Tensorflow安装与简单使用/tensorflow-logo.jpg" alt=""></p>
 <a id="more"></a>
-<p>替换空行： ^\s*\n <br>替换单行注释： //.*$ <br>替换多行注释： /\*[\s\S]*?\*/ <br>替换文档注释： /\*\*[\s\S]*?\*/ </p>
-<p>tags：<br>\s 匹配任何空白字符，包括空格、制表符、换页符等<br>\S 匹配任何非空白字符。<br>\n 匹配一个换行符。<br>^ 行的开始。<br>$ 行的结尾。<br>\ 转义字符。</p>
+<p>@toc</p>
+<p>写在开头：<br>1.本文时间：2018年12月；为什么要说明时间？因为技术是不断革新的，某些观点和步骤可能<br>不适合之后的版本。</p>
+<p>2.哪些系统可以安装tensorflow？<br>答：windows、linux、mac均可</p>
+<p>3.tensorflow的版本有哪些？<br>答：有CPU和GPU版本。<br>CPU因支持指令集不同，可以有不同的版本。如gituhub可下载到的编译好的window版就分为<br>x86_64/SSE2（普通64位），AVX2（支持avx2指令集，avx2是CPU的扩展指令集）。<br>GPU也分N卡和A卡。<br>安装适合机器的版本可以提高计算能力。</p>
+<p>4.怎么选择适合版本？<br>答：有支持tensorflow的显卡就用GPU版.<br>有支持高级指令集的CPU，就使用高级指令集的。<br>当然为了安装简单，也可以选择普遍适用的CPU普通版本。</p>
+<p>5.怎么查看CPU支持的指令集<br>答：windows可以使用cpu-z工具，linux可以使用相关命令。</p>
+<p>6.tensorflow安装方式有哪些？<br>答：可以安装编译好的版本，可以从源码编译安装。</p>
+<p>7.怎么下载tensorflow版本<br>答：window可以在gituhub下载较全的GPU和CPU编译版本。<br>linux可以下载到普通CPU（不支持AVX2等指令）和GPU编译版本。需要特定版本需要编译tensorflow源码安装。<br>mac……</p>
+<p>8.本文以CPU安装为主。</p>
+<h3 id="linux安装"><a href="#linux安装" class="headerlink" title="linux安装"></a>linux安装</h3><p>version：centos7.5（6以上也适用）、anaconda3、python3.6、tensorflow1.2<br>date：2018/11/26</p>
+<h4 id="一、Anaconda安装"><a href="#一、Anaconda安装" class="headerlink" title="一、Anaconda安装"></a>一、Anaconda安装</h4><p>1.下载安装<br><a href="https://www.anaconda.com/download/#linux" target="_blank" rel="noopener">Anaconda-linux</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#安装</span><br><span class="line">sh Anaconda3-5.3.1-Linux-x86_64.sh</span><br><span class="line"></span><br><span class="line">#测试</span><br><span class="line">conda --version</span><br><span class="line"></span><br><span class="line">#若提示 bash: conda: command not found，请设置环境变量，建议使用方法3一劳永逸</span><br><span class="line">#1.设置临时环境变量，仅当前会话生效</span><br><span class="line">export PATH=$PATH:~/anaconda3/bin</span><br><span class="line">#2.设置当前用户环境变量</span><br><span class="line">vim ~/.bash_profile</span><br><span class="line">#添加..，生效..</span><br><span class="line">#3.设置全局环境变量</span><br><span class="line">vim /etc/profile</span><br><span class="line">#添加如下</span><br><span class="line">export PATH=$PATH:~/anaconda3/bin</span><br><span class="line">#生效</span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br><span class="line">#conda其他命令</span><br><span class="line">#当前活跃环境下的所有包</span><br><span class="line">conda list</span><br><span class="line">#安装某个包</span><br><span class="line">conda install xxx</span><br></pre></td></tr></table></figure>
+<p>2.添加Anaconda下载源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#添加清华源</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge </span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/</span><br><span class="line">#设置搜索时显示通道地址</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+<h4 id="二、python安装"><a href="#二、python安装" class="headerlink" title="二、python安装"></a>二、python安装</h4><p>安装python环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#新建python3.6环境</span><br><span class="line">conda create --name py36 python=3.6</span><br><span class="line">#激活python3.6环境</span><br><span class="line">source activate py36</span><br><span class="line">#检查python版本是否为当前版本，重要</span><br><span class="line">python -V</span><br><span class="line">#若不同，请检查是否别名占用（Anaconda之前是否已经安装了python，并且绑定了别名）</span><br><span class="line">find / -name &quot;python&quot;</span><br><span class="line">vim ~/.bashrc</span><br><span class="line">#退出python3.6环境</span><br><span class="line">source deactivate</span><br><span class="line">bash</span><br></pre></td></tr></table></figure>
+<p>tips：<br>1.可以将Anaconda创建的常用的python环境加到环境变量中，然后就不用activate进入即可使用了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line">export PATH=$PATH:~/anaconda3/envs/py36/bin</span><br><span class="line">vim ~/.bashrc</span><br><span class="line">alias python=&apos;~/anaconda3/envs/py36/bin/python3.6&apos; </span><br><span class="line">source /etc/profile &amp;&amp; source ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>2.python程序后台运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup python -u /app/files/py/f1.py &gt; /app/files/logs/py.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<h4 id="三、tensorflow安装"><a href="#三、tensorflow安装" class="headerlink" title="三、tensorflow安装"></a>三、tensorflow安装</h4><p>进入Anaconda-python3.6环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source acticate py36</span><br></pre></td></tr></table></figure>
+<p>若之前没有安装过tensorflow，建议选择直接安装或者下载安装包安装。<br>若CPU支持额外的指令集，如AVX2，可以选择源码编译，提高计算性能。</p>
+<p>1.pip直接安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#cpu版本</span><br><span class="line">pip install tensorflow</span><br></pre></td></tr></table></figure>
+<p>2.安装包安装<br>1).<a href="https://pypi.org/project/tensorflow/#files" target="_blank" rel="noopener">pip官网下载</a><br>2).<a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">tensorflow-github下载</a><br>3).<a href="https://www.tensorflow.org/install/pip/" target="_blank" rel="noopener">tensorflow官网下载</a><br>4).<a href="https://github.com/search?utf8=%E2%9C%93&amp;q=tensorflow-linux-wheel&amp;ref=simplesearch" target="_blank" rel="noopener">github搜索</a><br>5).<a href="https://storage.googleapis.com/tensorflow/" target="_blank" rel="noopener">GoogleAPI查找</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow-1.12.0-cp36-cp36m-manylinux1_x86_64.whl</span><br></pre></td></tr></table></figure>
+<p>3.源码编译安装<br><a href="https://" target="_blank" rel="noopener">源码安装tensorflow</a></p>
+<h4 id="四、tensorflow测试及错误详解"><a href="#四、tensorflow测试及错误详解" class="headerlink" title="四、tensorflow测试及错误详解"></a>四、tensorflow测试及错误详解</h4><p>1.成功后，进入python环境，测试tensorflow </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">&gt;&gt;&gt; import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; hello = tf.constant(&apos;Hello, TensorFlow!&apos;)</span><br><span class="line">&gt;&gt;&gt; sess = tf.Session()</span><br><span class="line">&gt;&gt;&gt; print(sess.run(hello))</span><br></pre></td></tr></table></figure>
+<p>2.错误或警告</p>
+<p>1).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ModuleNotFoundError: No module named &apos;tensorflow&apos;</span><br></pre></td></tr></table></figure>
+<p>原因：<br>若安装无误，疑是找不到tensorflow路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#执行，在anaconda安装目录搜索tensorflow</span><br><span class="line">find /root/anaconda3/ -name &quot;tensorflow*&quot;</span><br><span class="line">#结果</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow-1.12.0.dist-info</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow/include/tensorflow</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow/include/tensorflow/core/protobuf/tensorflow_server.pb.h</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow/core/protobuf/__pycache__/tensorflow_server_pb2.cpython-36.pyc</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow/core/protobuf/tensorflow_server_pb2.py</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow/contrib/lite/toco/python/__pycache__/tensorflow_wrap_toco.cpython-36.pyc</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow/contrib/lite/toco/python/tensorflow_wrap_toco.py</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow/contrib/lite/python/interpreter_wrapper/__pycache__/tensorflow_wrap_interpreter_wrapper.cpython-36.pyc</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow/contrib/lite/python/interpreter_wrapper/tensorflow_wrap_interpreter_wrapper.py</span><br><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorboard/_vendor/tensorflow_serving</span><br></pre></td></tr></table></figure>
+<p>发现tensorflow路径，说明tensorflow安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/root/anaconda3/envs/py36/lib/python3.6/site-packages/</span><br></pre></td></tr></table></figure>
+<p>查看python版本是否为anaconda激活版本，不是请修改，方法之前已提到。我的原因便是此，不再深究。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/yiyezhouming/p/9497697.html" target="_blank" rel="noopener">非此可参考</a></p>
+<p>2).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImportError: /usr/lib64/libstdc++.so.6: version `GLIBCXX_3.4.17&apos; not found (required by /root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)</span><br></pre></td></tr></table></figure>
+<p>原因：检查gcc的动态库，缺少“GLIBCXX_3.4.17”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#执行</span><br><span class="line">strings /usr/lib64/libstdc++.so.6 | grep GLIBCXX</span><br><span class="line">#结果</span><br><span class="line">GLIBCXX_3.4</span><br><span class="line">GLIBCXX_3.4.1</span><br><span class="line">GLIBCXX_3.4.2</span><br><span class="line">GLIBCXX_3.4.3</span><br><span class="line">GLIBCXX_3.4.4</span><br><span class="line">GLIBCXX_3.4.5</span><br><span class="line">GLIBCXX_3.4.6</span><br><span class="line">GLIBCXX_3.4.7</span><br><span class="line">GLIBCXX_3.4.8</span><br><span class="line">GLIBCXX_3.4.9</span><br><span class="line">GLIBCXX_3.4.10</span><br><span class="line">GLIBCXX_3.4.11</span><br><span class="line">GLIBCXX_3.4.12</span><br><span class="line">GLIBCXX_3.4.13</span><br><span class="line">GLIBCXX_FORCE_NEW</span><br><span class="line">GLIBCXX_DEBUG_MESSAGE_LENGTH</span><br></pre></td></tr></table></figure>
+<p>解决：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">#执行</span><br><span class="line">find / -name &quot;libstdc++.so*&quot;</span><br><span class="line">#结果</span><br><span class="line">/usr/share/gdb/auto-load/usr/lib64/libstdc++.so.6.0.13-gdb.pyc</span><br><span class="line">/usr/share/gdb/auto-load/usr/lib64/libstdc++.so.6.0.13-gdb.py</span><br><span class="line">/usr/share/gdb/auto-load/usr/lib64/libstdc++.so.6.0.13-gdb.pyo</span><br><span class="line">/usr/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.13-gdb.pyc</span><br><span class="line">/usr/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.13-gdb.py</span><br><span class="line">/usr/share/gdb/auto-load/usr/lib/libstdc++.so.6.0.13-gdb.pyo</span><br><span class="line">/usr/lib64/libstdc++.so.6</span><br><span class="line">/usr/lib64/libstdc++.so.6.0.13</span><br><span class="line">/root/anaconda3/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so.6</span><br><span class="line">/root/anaconda3/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so</span><br><span class="line">/root/anaconda3/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so.6.0.25</span><br><span class="line">/root/anaconda3/envs/py36/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so.6</span><br><span class="line">/root/anaconda3/envs/py36/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so.6.0.24</span><br><span class="line">/root/anaconda3/envs/py36/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so</span><br><span class="line">/root/anaconda3/envs/py36/lib/libstdc++.so.6</span><br><span class="line">/root/anaconda3/envs/py36/lib/libstdc++.so.6.0.24</span><br><span class="line">/root/anaconda3/envs/py36/lib/libstdc++.so</span><br><span class="line">/root/anaconda3/envs/py37/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so.6</span><br><span class="line">/root/anaconda3/envs/py37/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so.6.0.24</span><br><span class="line">/root/anaconda3/envs/py37/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so</span><br><span class="line">/root/anaconda3/envs/py37/lib/libstdc++.so.6</span><br><span class="line">/root/anaconda3/envs/py37/lib/libstdc++.so.6.0.24</span><br><span class="line">/root/anaconda3/envs/py37/lib/libstdc++.so</span><br><span class="line">/root/anaconda3/lib/libstdc++.so.6</span><br><span class="line">/root/anaconda3/lib/libstdc++.so</span><br><span class="line">/root/anaconda3/lib/libstdc++.so.6.0.25</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-8.2.0-hdf63c60_1/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so.6</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-8.2.0-hdf63c60_1/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-8.2.0-hdf63c60_1/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so.6.0.25</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-8.2.0-hdf63c60_1/lib/libstdc++.so.6</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-8.2.0-hdf63c60_1/lib/libstdc++.so</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-8.2.0-hdf63c60_1/lib/libstdc++.so.6.0.25</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-7.2.0-hdf63c60_3/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so.6</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-7.2.0-hdf63c60_3/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so.6.0.24</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-7.2.0-hdf63c60_3/x86_64-conda_cos6-linux-gnu/sysroot/lib/libstdc++.so</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-7.2.0-hdf63c60_3/lib/libstdc++.so.6</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-7.2.0-hdf63c60_3/lib/libstdc++.so.6.0.24</span><br><span class="line">/root/anaconda3/pkgs/libstdcxx-ng-7.2.0-hdf63c60_3/lib/libstdc++.so</span><br><span class="line">#发现/usr/lib64下只有libstdc++.so.6.0.13，而/root/anaconda3/lib/目录下有libstdc++.so.6.0.25</span><br><span class="line">#复制文件，重建libstdc++.so.6软连接</span><br><span class="line">cd /usr/lib64</span><br><span class="line">cp /root/anaconda3/lib/libstdc++.so.6.0.25 ./</span><br><span class="line">mkdir -p ./bak/ &amp;&amp; cp libstdc++.so.6 &quot;$_&quot;</span><br><span class="line">rm -f libstdc++.so.6</span><br><span class="line">ln -s libstdc++.so.6.0.25 libstdc++.so.6</span><br><span class="line">#再次验证</span><br><span class="line">strings /usr/lib64/libstdc++.so.6 | grep GLIBCXX</span><br><span class="line">#结果</span><br><span class="line">GLIBCXX_3.4</span><br><span class="line">GLIBCXX_3.4.1</span><br><span class="line">GLIBCXX_3.4.2</span><br><span class="line">GLIBCXX_3.4.3</span><br><span class="line">GLIBCXX_3.4.4</span><br><span class="line">GLIBCXX_3.4.5</span><br><span class="line">GLIBCXX_3.4.6</span><br><span class="line">GLIBCXX_3.4.7</span><br><span class="line">GLIBCXX_3.4.8</span><br><span class="line">GLIBCXX_3.4.9</span><br><span class="line">GLIBCXX_3.4.10</span><br><span class="line">GLIBCXX_3.4.11</span><br><span class="line">GLIBCXX_3.4.12</span><br><span class="line">GLIBCXX_3.4.13</span><br><span class="line">GLIBCXX_3.4.14</span><br><span class="line">GLIBCXX_3.4.15</span><br><span class="line">GLIBCXX_3.4.16</span><br><span class="line">GLIBCXX_3.4.17</span><br><span class="line">GLIBCXX_3.4.18</span><br><span class="line">GLIBCXX_3.4.19</span><br><span class="line">GLIBCXX_3.4.20</span><br><span class="line">GLIBCXX_3.4.21</span><br><span class="line">GLIBCXX_3.4.22</span><br><span class="line">GLIBCXX_3.4.23</span><br><span class="line">GLIBCXX_3.4.24</span><br><span class="line">GLIBCXX_3.4.25</span><br><span class="line">GLIBCXX_DEBUG_MESSAGE_LENGTH</span><br><span class="line">#成功</span><br></pre></td></tr></table></figure>
+<p>3).</p>
+<p>错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImportError: /lib64/libc.so.6: version `GLIBC_2.16&apos; not found (required by /root/anaconda3/envs/py36/lib/python3.6/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)</span><br></pre></td></tr></table></figure>
+<p>原因，缺少GLIBC_2.16：继续画瓢</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#执行</span><br><span class="line">strings /lib64/libc.so.6 | grep GLIBC</span><br><span class="line">#结果</span><br><span class="line">GLIBC_2.2.5</span><br><span class="line">GLIBC_2.2.6</span><br><span class="line">GLIBC_2.3</span><br><span class="line">GLIBC_2.3.2</span><br><span class="line">GLIBC_2.3.3</span><br><span class="line">GLIBC_2.3.4</span><br><span class="line">GLIBC_2.4</span><br><span class="line">GLIBC_2.5</span><br><span class="line">GLIBC_2.6</span><br><span class="line">GLIBC_2.7</span><br><span class="line">GLIBC_2.8</span><br><span class="line">GLIBC_2.9</span><br><span class="line">GLIBC_2.10</span><br><span class="line">GLIBC_2.11</span><br><span class="line">GLIBC_2.12</span><br><span class="line">GLIBC_PRIVATE</span><br></pre></td></tr></table></figure>
+<p>解决（需要升级glibc库到2.16以上版本，注意glibc是linux的基础库，几乎所有的库都会依赖于glibc，破坏libc.so.6的软连接会导致几乎所有系统指令无法使用[万一删除请按照末尾方法恢复]）：</p>
+<p>glibc版本太高可能需要升级gcc，我直接用yum安装的gcc是4.4.7，无法进行太高版本的编译，而升级gcc又是一个漫长的过程，只专注眼前即可，所以选择较低版本2.17。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wget http://mirrors.ustc.edu.cn/gnu/libc/glibc-2.17.tar.gz</span><br><span class="line">tar -zxvf glibc-2.17.tar.gz</span><br><span class="line">mkdir glibc-2.17/build &amp;&amp; cd glibc-2.17/build</span><br><span class="line">#configure参数是升级关键，强烈建议不要修改</span><br><span class="line">../configure --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">#查看是否升级成功</span><br><span class="line">strings /lib64/libc.so.6 | grep GLIBC</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#如果没有gcc，需要先安装gcc</span><br><span class="line">#我的centos安装时只选择了（）,没有自带gcc。</span><br><span class="line">yum install gcc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#破坏libc.so.6请执行</span><br><span class="line">LD_PRELOAD=/lib64/libc-2.17.so ln -sf /lib64/libc-2.17.so /lib64/libc.so.6</span><br></pre></td></tr></table></figure>
+<p>4）.<br>警告：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA</span><br><span class="line">#警告提示你的CPU支持AVX2、FMA指令集，而tensorflow版本不支持。</span><br></pre></td></tr></table></figure>
+<p>解决方法有如下三种：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#1.安装AVX2指令集的tensorflow</span><br><span class="line">#2.代码中加入，将tensorflowr日志显示级别调整为2，即不显示这个警告，默认为1</span><br><span class="line">import os</span><br><span class="line">os.environ[&quot;TF_CPP_MIN_LOG_LEVEL&quot;] = &apos;2&apos;</span><br><span class="line">#3.可以选择不处理</span><br></pre></td></tr></table></figure>
+<p>五、tensorflow卸载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall tensorflow</span><br></pre></td></tr></table></figure>
+<h3 id="window安装"><a href="#window安装" class="headerlink" title="window安装"></a>window安装</h3><p>version：window7、python3.6、tensorflow1.1<br>date：2018/11/06</p>
+<p>1.exe安装Anaconda<br><a href="https://www.anaconda.com/download/#windows" target="_blank" rel="noopener">Anaconda-windows</a></p>
+<p>2.测试是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda --version</span><br></pre></td></tr></table></figure>
+<p>3.安装python3.6环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda --versionconda create --name python36 python=3.6</span><br><span class="line">activate python36</span><br></pre></td></tr></table></figure>
+<p>4.根据CPU（分x86_64和AVX2版本）或GPU下载tensorflow</p>
+<p><a href="https://github.com/fo40225/tensorflow-windows-wheel" target="_blank" rel="noopener">tensorflow-windows</a></p>
+<p>5.pip安装，我下载了CPU的AVX2版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow-1.11.0-cp36-cp36m-win_amd64.whl</span><br></pre></td></tr></table></figure>
+<p>6.测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#进入python</span><br><span class="line">pyhon</span><br><span class="line">#键入测试</span><br><span class="line">&gt;&gt;&gt;import tensorflow as tf</span><br><span class="line">&gt;&gt;&gt; hello = tf.constant(&apos;Hello, TensorFlow!&apos;)</span><br><span class="line">&gt;&gt;&gt; sess = tf.Session()</span><br><span class="line">&gt;&gt;&gt; print(sess.run(hello))</span><br></pre></td></tr></table></figure>
+<p>7.可能发生的错误或警告</p>
+<p>1）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade --ignore-installed tensorflow</span><br><span class="line">#python3.7下pip直接安装tensorflow</span><br><span class="line">#could not find a version that satisfies the requirement tensorflow</span><br><span class="line">#由于当时pip库里还没有适合python3.7的tensorflow版本，后续可能不会有此问题；若有此，请从github地址下载安装</span><br></pre></td></tr></table></figure>
+<p>2）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2</span><br><span class="line">#警告提示你的CPU支持AVX2指令集，而tensorflow版本不支持。使用pip install --upgrade --ignore-installed tensorflow会默认安装x86_64版本</span><br><span class="line">#这个警告也可以选择不处理</span><br><span class="line">#卸载tensorflow，下载安装AVX2版本</span><br><span class="line">pip uninstall tensorflow</span><br><span class="line">pip list</span><br></pre></td></tr></table></figure>
 
       
 
@@ -172,7 +249,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">随便写写</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
       		
 		</ul>
@@ -228,7 +305,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/06/13/正则表达式删除代码注释/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/27/Tensorflow安装与简单使用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -242,18 +319,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/27/博客备份/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          博客备份
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/13/Windows和RedHat共享文件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Windows和RedHat共享文件</div>
+    <a href="/2018/07/09/腾讯优图AI开放平台初体验/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">腾讯优图AI开放平台初体验</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -272,6 +340,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux安装"><span class="toc-number">1.</span> <span class="toc-text">linux安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、Anaconda安装"><span class="toc-number">1.1.</span> <span class="toc-text">一、Anaconda安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、python安装"><span class="toc-number">1.2.</span> <span class="toc-text">二、python安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、tensorflow安装"><span class="toc-number">1.3.</span> <span class="toc-text">三、tensorflow安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四、tensorflow测试及错误详解"><span class="toc-number">1.4.</span> <span class="toc-text">四、tensorflow测试及错误详解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#window安装"><span class="toc-number">2.</span> <span class="toc-text">window安装</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
