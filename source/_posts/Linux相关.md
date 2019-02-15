@@ -106,7 +106,7 @@ cat file.txt | tr -d "^M" > newfile.txt
 
 IIII.批量处理
 
-* 1). 批量删除
+* 1). shell批量删除
 
 ```
 #!/bin/bash
@@ -126,6 +126,40 @@ do
     printf "\n%s\n" $file
     cat -A $file
 done
+```
+
+3).java批量删除
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        File path = new File("d:\\test");
+        File[] files = path.listFiles();
+        for (File f : files) {
+            if (f.isFile() && f.getName().endsWith(".txt")) {
+                String enter = "\n";
+                String line;
+                StringBuilder sb = new StringBuilder();
+                String fPath = f.getAbsolutePath();
+                File newF = new File(fPath.substring(0, fPath.lastIndexOf(f.getName())) + "bak" + File.separator + f.getName());
+                try (BufferedReader br = new BufferedReader(new FileReader(f));
+                     BufferedWriter bw = new BufferedWriter(new FileWriter(newF))) {
+                    while ((line = br.readLine()) != null) {
+                        sb.append(line);
+                        sb.append(enter);
+                    }
+                    bw.write(sb.substring(0, sb.lastIndexOf("\n")));
+                    bw.flush();
+                } catch (IOException e) {
+                    System.out.println(f.getName());
+                    e.printStackTrace();
+                }
+
+            }
+        }
+        System.out.println("finished.");
+    }
+}
 ```
 
 
