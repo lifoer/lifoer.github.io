@@ -43,9 +43,9 @@ unzip file.zip
 
 压缩：
 ```
-zip -r file.zip file -r
+zip -r file.zip file
 ```
-zip [参数] [压缩后的文件名] [被压缩文件名] -r表示递归
+zip [参数] [压缩后的文件名] [被压缩文件名] 
 
 4> tar.bz2
 解压：
@@ -87,6 +87,47 @@ ln –s 源文件 目标文件
 ```
 ln /root/anaconda3/envs/py36/bin/python3.6 python
 ```
+
+6.linux删除文本中^M
+
+I.^M引起原因：“\r”回车符
+
+II.查看^M
+
+```
+cat -A file.txt
+```
+
+III.删除^M，^M不可复制，手动按出：ctrl+v+m
+
+```
+cat file.txt | tr -d "^M" > newfile.txt
+```
+
+IIII.批量处理
+
+* 1). 批量删除
+
+```
+#!/bin/bash
+for file in `ls | grep .txt`
+do
+    newfile=`echo $file | sed "s/\([a-zA-Z0-9]\+\)\(.txt\)/\1-f\2/"`
+    cat $file | tr -d "^M" > $newfile
+done
+```
+
+* 2).批量验证
+
+```
+#!/bin/bash
+for file in `ls | grep .txt`
+do 
+    printf "\n%s\n" $file
+    cat -A $file
+done
+```
+
 
 
 
