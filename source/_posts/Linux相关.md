@@ -110,11 +110,21 @@ IIII.批量处理
 
 ```
 #!/bin/bash
+if [ ! -d bak ]; then
+    mkdir bak
+fi
 for file in `ls | grep .txt`
 do
-    newfile=`echo $file | sed "s/\([a-zA-Z0-9]\+\)\(.txt\)/\1-f\2/"`
-    cat $file | tr -d "^M" > $newfile
+    cat $file | tr -d "^M" > bak/$file
 done
+```
+
+* tips：
+```
+#重命名
+#newfile=`echo $file | sed "s/\([a-zA-Z0-9]\+\)\(.txt\)/\1-bak\2/"`
+#syntax error near unexpected token `d
+#shell文件有^M，需要先去掉；不能正其身,如正人何。
 ```
 
 * 2).批量验证
@@ -123,12 +133,12 @@ done
 #!/bin/bash
 for file in `ls | grep .txt`
 do 
-    printf "\n%s\n" $file
-    cat -A $file
+    printf "\n%s\n" bak/$file
+    cat -A bak/$file
 done
 ```
 
-3).java批量删除
+* 3).java批量删除
 
 ```java
 public class Test {
