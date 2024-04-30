@@ -167,8 +167,8 @@
 <p> 3.安装git：<br>   sudo apt-get install git</p>
 <p> 4.配置ssh公钥，在本地生成ssh公钥，邮箱即为注册github的邮箱<br>   ssh-keygen -C ‘your emaildress’ -t rsa</p>
 <p> 5.上传ssh公钥至github<br>   github头像-settings-ssh and gpg keys-new ssh key<br>   将~&#x2F;.ssh&#x2F;id_rsa.pub中的内容复制进去。</p>
-<p> 6.测试git连接github是否畅通<br>   ssh -T <a href="mailto:&#x67;&#105;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;</a></p>
-<p> 7.git配置<br>   git config –global user.name “your_user_name”  #注册github的用户名<br>   git config –global user.email “<a href="mailto:&#x78;&#x78;&#120;&#64;&#x78;&#x78;&#x78;&#46;&#x63;&#111;&#109;">&#x78;&#x78;&#120;&#64;&#x78;&#x78;&#x78;&#46;&#x63;&#111;&#109;</a>“  #注册github的邮箱</p>
+<p> 6.测试git连接github是否畅通<br>   ssh -T <a href="mailto:&#103;&#x69;&#x74;&#64;&#x67;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#103;&#x69;&#x74;&#64;&#x67;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p> 7.git配置<br>   git config –global user.name “your_user_name”  #注册github的用户名<br>   git config –global user.email “<a href="mailto:&#x78;&#x78;&#x78;&#64;&#x78;&#x78;&#120;&#x2e;&#x63;&#111;&#x6d;">&#x78;&#x78;&#x78;&#64;&#x78;&#x78;&#120;&#x2e;&#x63;&#111;&#x6d;</a>“  #注册github的邮箱</p>
 <p>三、node.js安装<br> 1.先安装nodejs版本管理工具nvm<br>   git clone https://github.com/creationix/nvm.git</p>
 <p> 2.添加如下代码到系统变量.bashrc(sudo gedit ~&#x2F;.bashrc)<br>   source ~&#x2F;.nvm&#x2F;nvm.shr</p>
 <p> 3.查看可以使用的node.js版本<br>   nvm ls-remote </p>
@@ -176,7 +176,7 @@
 <p>四、安装hexo<br> 1.安装命令<br>   npm install -g hexo-cli</p>
 <p> 2.建立hexo工作站，folder的位置即为本地博客存放地址<br>   hexo init【folder】<br>   cd 【folder】<br>   npm install</p>
 <p> 3.预览hexo自动生成的博客<br>   hexo s</p>
-<p>五、上传博客文件到github<br> 1.在hexo工作站根目录下的配置文件_config.yml中配置部署信息<br>deploy:<br>  type: git<br>  repo: <a href="mailto:&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#x6d;">&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#x6d;</a>:your_user_name&#x2F;your_user_name.github.io.git<br>  branch: master<br>  message: '站点更新:{{now("YYYY-MM-DD HH:mm:ss")}}' </p>
+<p>五、上传博客文件到github<br> 1.在hexo工作站根目录下的配置文件_config.yml中配置部署信息<br>deploy:<br>  type: git<br>  repo: <a href="mailto:&#103;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#103;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>:your_user_name&#x2F;your_user_name.github.io.git<br>  branch: master<br>  message: '站点更新:{{now("YYYY-MM-DD HH:mm:ss")}}' </p>
 <p>2.安装hexo插件<br>  npm install hexo-deployer-git –save</p>
 <p>3.上传代码至github<br>   hexo d </p>
 <p>六、修改博客主题、写博客<br> 1.修改博客的主题，以yilia主题为例，下载的主题在themes&#x2F;yilia<br>   cd【hexo工作站目录】<br>   git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</p>
