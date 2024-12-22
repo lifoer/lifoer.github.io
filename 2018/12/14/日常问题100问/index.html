@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/14/%E6%97%A5%E5%B8%B8%E9%97%AE%E9%A2%98100%E9%97%AE/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/14/%E6%97%A5%E5%B8%B8%E9%97%AE%E9%A2%98100%E9%97%AE/2.png">
 <meta property="article:published_time" content="2018-12-14T11:04:36.000Z">
-<meta property="article:modified_time" content="2024-12-22T07:00:02.635Z">
+<meta property="article:modified_time" content="2024-12-22T07:35:16.548Z">
 <meta property="article:author" content="Poem and Code">
 <meta property="article:tag" content="记录">
 <meta name="twitter:card" content="summary">
@@ -482,6 +482,26 @@
 </li>
 <li><p>用的地方</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; useGlobalStore &#125; from &#x27;@/stores&#x27;</span><br><span class="line"></span><br><span class="line">const global = useGlobalStore()</span><br><span class="line">console.log(global.user.username)</span><br><span class="line">console.log(global.yDoc)</span><br><span class="line">console.log(global.websocketProvider)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>单例模式共享</p>
+<ul>
+<li><p>YjsManager.ts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Doc &#125; from &#x27;yjs&#x27;</span><br><span class="line">import &#123; WebsocketProvider &#125; from &#x27;y-websocket&#x27;</span><br><span class="line"></span><br><span class="line">class YjsManager &#123;</span><br><span class="line">  static instance: YjsManager</span><br><span class="line">  yDoc: Doc</span><br><span class="line">  wsProvider: WebsocketProvider</span><br><span class="line"></span><br><span class="line">  constructor() &#123;</span><br><span class="line">    this.yDoc = new Doc()</span><br><span class="line">    this.wsProvider = new WebsocketProvider(&#x27;ws://localhost:1234&#x27;, &#x27;my-room&#x27;, this.yDoc)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  static getInstance() &#123;</span><br><span class="line">    if (!YjsManager.instance) &#123;</span><br><span class="line">      YjsManager.instance = new YjsManager()</span><br><span class="line">    &#125;</span><br><span class="line">    return YjsManager.instance</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default YjsManager</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用的地方</p>
+<ul>
+<li><p>方式一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import YjsManager from &#x27;./YjsManager&#x27;;</span><br><span class="line"></span><br><span class="line">const yjsManager = YjsManager.getInstance();</span><br><span class="line">const yDoc = yjsManager.yDoc;</span><br><span class="line">const wsProvider = yjsManager.wsProvider;</span><br><span class="line"></span><br><span class="line">console.log(yDoc, wsProvider);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方式二：</p>
+<p>main.ts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import &#123; provide &#125; from &#x27;vue&#x27;;</span><br><span class="line">import YjsManager from &#x27;./YjsManager&#x27;;</span><br><span class="line"></span><br><span class="line">const yjsManager = YjsManager.getInstance();</span><br><span class="line"></span><br><span class="line">provide(&#x27;yDoc&#x27;, yjsManager.yDoc);</span><br><span class="line">provide(&#x27;wsProvider&#x27;, yjsManager.wsProvider);</span><br></pre></td></tr></table></figure>
+
+<p>用的地方</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; inject &#125; from &#x27;vue&#x27;;</span><br><span class="line"></span><br><span class="line">const yDoc = inject(&#x27;yDoc&#x27;);</span><br><span class="line">const wsProvider = inject(&#x27;wsProvider&#x27;);</span><br><span class="line"></span><br><span class="line">console.log(yDoc, wsProvider);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
