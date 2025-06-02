@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/14/%E6%97%A5%E5%B8%B8%E9%97%AE%E9%A2%98100%E9%97%AE/1.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/14/%E6%97%A5%E5%B8%B8%E9%97%AE%E9%A2%98100%E9%97%AE/2.png">
 <meta property="article:published_time" content="2018-12-14T11:04:36.000Z">
-<meta property="article:modified_time" content="2024-12-22T07:37:53.433Z">
+<meta property="article:modified_time" content="2025-06-02T12:49:58.184Z">
 <meta property="article:author" content="Poem and Code">
 <meta property="article:tag" content="记录">
 <meta name="twitter:card" content="summary">
@@ -206,8 +206,6 @@
 </li>
 <li><p>如何用tar命令拆包和合包</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar cjf - modules.tar.gz |split -b 300m - modules.tar.gz.</span><br><span class="line"></span><br><span class="line">cat modules.tar.gz.* | tar xj</span><br><span class="line"></span><br><span class="line">tips: yum -y install bzip2</span><br></pre></td></tr></table></figure>
-
-
 </li>
 <li><p>cmd怎么计算md5</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CertUtil -hashfile C:\xxx.tar MD5</span><br></pre></td></tr></table></figure>
@@ -505,6 +503,11 @@
 </ul>
 </li>
 </ul>
+</li>
+<li><p>笔记本安装linux，如何合盖不挂起</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/systemd/logind.conf</span><br><span class="line">HandleLidSwitch=lock</span><br></pre></td></tr></table></figure>
+
+<p>可选值suspend（挂起、默认值）、lock（锁定）、ignore（忽略）、poweroff（关机）、hibernate（休眠）</p>
 </li>
 </ul>
 
